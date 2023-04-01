@@ -41,15 +41,15 @@ This repository is for the EMNLP 2021 paper "Automated Generation of Accurate &a
 <B>Step 0:</B> Build your vocabulary model with SentencePiece (tools/vocab_builder.py)
 - Please make sure that you have preprocess the medical reports accurately.
 + For MIMIC-CXR dataset, use the tools/report_extractor.py
-+ **For the Open-I dataset (NLMCXR), we used the preprocessed file (based on the "On the Automatic Generation of Medical Imaging Reports" - Jing et. al.) from this repository:** https://raw.githubusercontent.com/ZexinYan/Medical-Report-Generation/master/data/new_data/captions.json
-- We use the top 900 high-frequency words
-- We use 100 unigram tokens extracted from SentencePiece to avoid the out-of-vocabulary situation.
-- In total we have 1000 words and tokens.
++ **For the Open-I dataset (NLMCXR), the preprocessed file (based on the "On the Automatic Generation of Medical Imaging Reports" - Jing et. al.) was used from this repository:** https://raw.githubusercontent.com/ZexinYan/Medical-Report-Generation/master/data/new_data/captions.json
+- The top 900 high-frequency words are used
+- 100 unigram tokens extracted from SentencePiece are used to avoid the out-of-vocabulary situation.
+- In total 1000 words and tokens have used.
 **Update: You can skip step 0 and use the vocabulary files in Vocabulary/*.model**
 
 <B>Step 1:</B> Train the LSTM and/or Transformer models, which are just text classifiers, to obtain 14 common disease labels.
 - Use the train_text.py to train the models on your working datasets. For example, the MIMIC-CXR comes with CheXpert labels; you can use these labels as ground-truth to train a differentiable text classifier model. Here the text classifier is a binary predictor (postive/uncertain) = 1 and (negative/unmentioned) = 0.
-- Assume the trained text classifier is perfect and exactly reflects the medical reports. Although this is not the case, in practice, it gives us a good approximation of how good the generated reports are. Human evaluation is also needed to evalutate the generated reports.
+- Assume the trained text classifier is perfect and exactly reflects the medical reports. Although this is not the case, in practice, it gives a good approximation of how good the generated reports are. Human evaluation is also needed to evalutate the generated reports.
 - The goals here are:
 1) Evaluate the performance of the generated reports by comparing the predicted labels and the ground-truth labels.
 2) Use the trained models to fine-tune medical reports' output.
