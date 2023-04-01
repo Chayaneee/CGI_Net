@@ -1,13 +1,12 @@
 # Introduction: X-Ray Report Generation
-This repository is for our EMNLP 2021 paper "Automated Generation of Accurate &amp; Fluent Medical X-ray Reports". Our work adopts x-ray (also including some history data for patients if there are any) as input, a CNN is used to learn the embedding features for x-ray, as a result, <B>disease-state-style information</B> (Previously, almost all work used detected disease embedding for input of text generation network which could possibly exclude the false negative diseases) is extracted and fed into the text generation network (transformer). To make sure the <B>consistency</B> of detected diseases and generated x-ray reports, we also create a <B>interpreter</B> to enforce the accuracy of the x-ray reports. For details, please refer to [here](https://aclanthology.org/2021.emnlp-main.288/).
+This repository is for the EMNLP 2021 paper "Automated Generation of Accurate &amp; Fluent Medical X-ray Reports" by Nguyen et al. The work adopts x-ray (also including some history data for patients if there are any) as input, a CNN is used to learn the embedding features for x-ray, as a result, <B>disease-state-style information</B> (Previously, almost all work used detected disease embedding for input of text generation network which could possibly exclude the false negative diseases) is extracted and fed into the text generation network (transformer). To make sure the <B>consistency</B> of detected diseases and generated x-ray reports, the authors create a <B>interpreter</B> to enforce the accuracy of the x-ray reports. For details, please refer to [here](https://aclanthology.org/2021.emnlp-main.288/).
 
 <p align="center">
   <img src="https://github.com/ginobilinie/xray_report_generation/blob/main/img/motivation.png" width="400" height="400">
 </p>
 
 
-# Data we used for experiments
-We use two datasets for experiments to validate our method: 
+# Data used for experiments: 
 
   - [OpenI](https://openi.nlm.nih.gov/)
   - [MIMIC](https://physionet.org/content/mimiciii-demo/1.4/)
@@ -38,7 +37,7 @@ We use two datasets for experiments to validate our method:
    - Other Libraries: [Spacy](https://spacy.io/), [SentencePiece](https://github.com/google/sentencepiece), [nlg-eval](https://github.com/Maluuba/nlg-eval)
 
 
-# How to use our code for train/test
+# How to use the code for train/test
 <B>Step 0:</B> Build your vocabulary model with SentencePiece (tools/vocab_builder.py)
 - Please make sure that you have preprocess the medical reports accurately.
 + For MIMIC-CXR dataset, use the tools/report_extractor.py
@@ -89,9 +88,9 @@ We use two datasets for experiments to validate our method:
 - Use the [nlg-eval library](https://github.com/Maluuba/nlg-eval) to compute BLEU-1 to BLEU-4 scores and other metrics.
 
 
-## Our pretrained models
+## Authors pretrained models
 
-Our model is uploaded in google drive, please download the model from
+The model is uploaded in google drive, please download the model from
 
 | Model Name  | Download Link (Goog) | Download Link (Baidu)|
 | ------------- | ------------- |---------------|
@@ -100,8 +99,7 @@ Our model is uploaded in google drive, please download the model from
 
 
 # Citation
-If it is helpful to you, please cite our work:
-```
+
 @inproceedings{nguyen-etal-2021-automated,
     title = "Automated Generation of Accurate {\&} Fluent Medical {X}-ray Reports",
     author = "Nguyen, Hoang  and
